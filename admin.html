@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <link href="html/style.css" rel="stylesheet">
+
+</head>
+<body>
+<header>
+    <h1>Admin</h1>
+    <button style="margin-left: 80%; margin-bottom: 10px" onclick="document.location='index.php'">back</button>
+</header>
+
+<div class="conteiner-filter">
+    <div>
+        <form class="filter-data" name="filter-data" action="admin.php" method="post">
+
+            <div>
+                <input type="checkbox" id="strict-chb" name="strict-chb">
+                <label for="strict-chb">strict filter</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="published-chb" name="published-chb">
+                <label for="published-chb">published</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="answer-chb" name="answer-chb">
+                <label for="answer-chb">with answer</label>
+            </div>
+
+            <input type="submit" id="filter-button" name="filter-button" value="Enter">
+            <input type="submit" id="filter-button-reset" name="filter-button-reset" value="show all"><Br>
+        </form>
+    </div>
+</div>
+
+<div id="table-result" class="col-12">
+    <div class="table-responsive" style="overflow: visible;">
+        <table class="table table-hover  table-striped" style="background-color: #95999c">
+            <?php if(isset($result) && !empty($result)) : ?>
+                <thead>
+                <tr>
+                    <?php if(!empty($result)) { ?>
+                        <th scope="col"></th>
+                        <?php foreach ($result[0] as $key => $row) { ?>
+                            <th scope="col"><?= $key; ?></th>
+                        <?php } ?>
+                    <?php } ?>
+                </tr>
+                </thead>
+
+
+                <?php foreach ($result as $key => $row) { ?>
+                    <tbody >
+                        <tr onclick="window.location.href='moderation.php?q='+<?= $row['id'] ;?>; return false">
+                            <th scope="row"></th>
+                            <?php foreach ($row as $i) { ?>
+                                <td><?= trim($i); ?> </td>
+                            <?php } ?>
+                        </tr>
+
+                    </tbody>
+                <?php } ?>
+            <?php endif; ?>
+        </table>
+
+    </div>
+
+
+</div>
+
+
+<footer>
+
+</footer>
+
+</body>
+</html>

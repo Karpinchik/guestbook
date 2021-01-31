@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moderation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link href="html/style.css" rel="stylesheet">
+</head>
+<body>
+
+<h1 style="text-align: center">Moderation</h1>
+
+<button style="margin-left: 80%; margin-bottom: 10px" onclick="document.location='admin.php'">back</button>
+
+<div class="moderation-main" style="padding-left: 20px;">
+    <div class="form-moderation">
+        <form name="moderation" action="moderation.php" method="post">
+            <?php echo "Отзыв № - ".$data_review['id'];?>
+            <p>Title -
+                <?php echo $data_review['title'];?>
+            </p>
+
+            <label>Message:</label><Br>
+            <p><textarea name="message-moderation" cols="100" rows="10">
+                <?php echo $data_review['message'];?></textarea></p>
+
+            <label>Answer:</label><Br>
+            <p><textarea class="answer-moderation" name="answer-moderation"  cols="100" rows="8">
+                <?php echo $data_review['answer'];?></textarea></p>
+
+            <label>Show</label><Br>
+            <p><input class="display-moderation" name="display-moderation" type="checkbox" ></p>
+
+            <p style="display: none">
+                <input class="id-item" name="id-item" type="number" value="<?= $data_review['id'];?>">
+            </p>
+
+            <p><input type="submit" name="redaction" value="Redaction"></p>
+            <p><input type="submit" name="delete" value="Delete"></p>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

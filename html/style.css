@@ -1,0 +1,55 @@
+header {
+    text-align: center;
+}
+
+.name-reviews {
+    text-align: center;
+}
+
+.moderation-main {
+    padding-left: 20px;
+    text-align: center;
+}
+
+.form-input {
+    background-color: whitesmoke;
+    border: solid 1px black;
+    text-align: center;
+    margin-left: 110px;
+    margin-right: 110px;
+}
+
+.data-reviews {
+    background-color: whitesmoke;
+    border: solid 1px black;
+    margin-left: 110px;
+    margin-right: 110px;
+
+}
+
+.pagination-links {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.view-review {
+    padding: 10px;
+    background-color: azure;
+    margin: 20px;
+}
+
+.show-answer {
+    background-color: lavender;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding: 10px;
+}
+
+#button {
+    margin-top: 20px;
+}
+
+.conteiner-filter {
+    text-align: center;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <link href="html/style.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>Guestbook</h1>
+    <button style="margin-left: 80%; margin-bottom: 10px" onclick="document.location='admin.php'">admin</button>
+</header>
+<div class="main">
+
+    <div class="form-input">
+        <form class="review" name="review" action="index.php" method="post">
+            <label>Title:</label><Br>
+            <input class="title-review" name="title-review" type="text"><Br>
+            <label>Message:</label><Br>
+            <textarea name="message-review" cols="40" rows="3"></textarea><Br>
+            <label>Name:</label><Br>
+            <input class="name-review" name="name-review" type="text"><Br>
+            <label>Phone:</label><Br>
+            <input class="phone-review" name="phone-review" type="tel"><Br>
+            <label>Email:</label><Br>
+            <input class="email-review" name="email-review" type="email"><Br>
+            <p><input type="submit" id="button" value="Enter"></p><Br>
+        </form>
+    </div>
+
+
+    <div class="content-reviews">
+        <h2 class="name-reviews">Reviews</h2>
+            <div class="data-reviews">
+                <?php for ($i = 0; $i <= count($res_pagination)-1; $i++) : ?>
+                    <div class="view-review" >
+                        <span class="show-title" style="font-weight: bold"> <?= $res_pagination[$i]['title']; ?></span><br>
+                        <span class="show-name">User: <?= $res_pagination[$i]['name']; ?></span>
+                        <span class="show-date"> <?= $res_pagination[$i]['date']; ?></span><br>
+                        <p class="show-message"><?= $res_pagination[$i]['message']; ?></p>
+                        <?php if(isset($res_pagination[$i]['answer']) && !empty($res_pagination[$i]['answer'])) : ?>
+                            <p class="show-answer"><?= $res_pagination[$i]['answer']; ?></p>
+                        <?php endif; ?>
+                    </div>
+                <?php endfor; ?>
+            </div>
+    </div>
+
+    <div class="pagination-links">
+        <?php echo $pagin_link;?>
+    </div>
+
+</div>
+
+<footer>
+
+</footer>
+
+</body>
+</html>
